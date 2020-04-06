@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataServices } from '../data.services';
+import * as firebase from 'firebase';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  prova: string = "SUP";
 
-  ngOnInit() {
+  constructor(private dataServices: DataServices, private loginService: LoginService) { }
+
+  ngOnInit(){
+    // firebase.initializeApp({  NO CAL AQUI
+    //   apiKey: "AIzaSyDtqry5sCAVie6uv06rBFyfOLdUXhFJYKU",
+    //   authDomain: "projecteangularmad.firebaseapp.com",
+    // })
+  }
+
+  isAutenticado(){
+    return this.loginService.isAutenticado();
+  }
+
+  salir(){
+    this.loginService.logout();
   }
 
 }

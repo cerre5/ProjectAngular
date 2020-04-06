@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "bootstrap": "^4.4.1",
+    "firebase": "^7.13.2",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.4.0",
@@ -46,5 +47,17 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cerre5/ProjectAngular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cerre5/ProjectAngular/issues"
+  },
+  "homepage": "https://github.com/cerre5/ProjectAngular#readme"
 }
