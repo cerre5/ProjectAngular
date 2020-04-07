@@ -9,13 +9,17 @@ import { LoginService } from './login/login.service';
 import { FormsModule } from '@angular/forms';
 import { DataServices } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactionSpeedComponent } from './reaction-speed/reaction-speed.component';
+import { AltreTestComponent } from './altre-test/altre-test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainPageComponent,
-    LoginComponent
+    LoginComponent,
+    ReactionSpeedComponent,
+    AltreTestComponent
   ],
   imports: [
     BrowserModule,
