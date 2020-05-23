@@ -7,7 +7,7 @@ import { AltreTestComponent } from './altre-test/altre-test.component';
 
 
 const appRoutes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: MainPageComponent},
   {path: 'testos', component: MainPageComponent},
   {path: 'reaction-speed', component: ReactionSpeedComponent},
   {path: 'altre-test', component: AltreTestComponent},

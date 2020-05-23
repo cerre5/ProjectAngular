@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataServices } from '../data.services';
 var jocComensat = false;
 var divEsClickable = true;
 var interval;
@@ -13,7 +14,9 @@ var tempsAconseguit;
 
 
 export class ReactionSpeedComponent implements OnInit {
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router, 
+    private dataServices: DataServices) { }
 
   ngOnInit() {
 
@@ -36,6 +39,9 @@ export class ReactionSpeedComponent implements OnInit {
       clearInterval(interval);
       //AQUI ESTA EL VALOR PER PUJAR A LA BASE DE DADES SI ES EL SEU MILLOR TEMPS
       console.log(tempsAconseguit);
+      //AQUI ES CRIDA EL METODE DE DATASSERVICES QUE PENJA A LA BASE DE DADES, CANVIAR
+      //USUARI PER L'USUARI QUE ESTIGUI LOGGEADO
+      this.dataServices.guardarPuntuacio("usuariPendentDeFerLogin", "reactionspeed", tempsAconseguit)
       document.getElementById("divclickable").innerHTML = document.getElementById("divclickable").innerHTML + "<br />" + "torna a clickar  ";
       jocComensat = false;
     }
