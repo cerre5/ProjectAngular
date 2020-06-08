@@ -22,4 +22,5 @@
 .topnav a:hover {
     background-color: darkgrey;
     color: black;
+    cursor: pointer;
 }
