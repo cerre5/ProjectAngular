@@ -16,30 +16,33 @@ export class MainPageComponent implements OnInit {
 
   constructor(private dataServices: DataServices,
     private loginService: LoginService,
-    private router:Router,
+    private router: Router,
     public user: UserService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     //comprovar si el usuari ha fet login
     if (!this.user.getUID()) {
       this.router.navigate(['register']);
     }
-   
+
+  }
+  logout() {
+    this.router.navigate(['login']);
   }
 
-  isAutenticado(){
+  isAutenticado() {
     return this.loginService.isAutenticado();
   }
 
-  salir(){
+  salir() {
     this.loginService.logout();
   }
 
-  obrirReactionSpeed(){
+  obrirReactionSpeed() {
     this.router.navigate(['reaction-speed']);
   }
 
-  obrirAltreTest(){
+  obrirAltreTest() {
     this.router.navigate(['altre-test']);
   }
 

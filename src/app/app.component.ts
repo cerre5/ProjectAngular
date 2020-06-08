@@ -13,10 +13,7 @@ export class AppComponent {
   constructor(){}
 
   ngOnInit(): void {
-    firebase.initializeApp({
-      apiKey: "AIzaSyDtqry5sCAVie6uv06rBFyfOLdUXhFJYKU",
-      authDomain: "projecteangularmad.firebaseapp.com",
-    })
+    
   }
 
 }

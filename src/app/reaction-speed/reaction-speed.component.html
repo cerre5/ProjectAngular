@@ -1,3 +1,5 @@
+<button (click)="logout()">Sortir</button>
+
 <div class="topnav">
     <a (click)="tornar()">Tornar</a>
 </div>
@@ -6,24 +8,25 @@
     <h1 id="textclickable" class="textinterior sansserif">Clica per començar!</h1>
 </div>
 
-<br/>
+<br />
 <!-- <p>RANKING!!!</p>
 <div *ngFor="let puntuacio of ranking; index as i">
     <p>{{i + 1}}) Usuari: {{puntuacio.username}} Millor temps: {{puntuacio.tempsAconseguit}}</p>
 </div> -->
 
 <div class="container">
-<div class="card text-center">
-    <div *ngIf="maximaPuntuacio" class="card-header">
-        <h2 class="millorPuntuacio">La teva millor puntuació és: {{maximaPuntuacio}}</h2>
-    </div>
-    <div *ngIf="ranking" class="card-body">
-        <h5 class="card-title">Els jugadors amb millors reflexos!</h5>
-
-        <div *ngFor="let puntuacio of ranking; index as i">
-            <p class="card-text textGran">{{i + 1}}) Usuari: {{puntuacio.username}} Millor temps: {{puntuacio.tempsAconseguit}}</p>
+    <div class="card text-center">
+        <div *ngIf="maximaPuntuacio" class="card-header">
+            <h2 class="millorPuntuacio">La teva millor puntuació és: {{maximaPuntuacio}}</h2>
         </div>
+        <div *ngIf="ranking" class="card-body">
+            <h5 class="card-title">Els jugadors amb millors reflexos!</h5>
 
+            <div *ngFor="let puntuacio of ranking; index as i">
+                <p class="card-text textGran">{{i + 1}}) Usuari: {{puntuacio.username}} Millor temps:
+                    {{puntuacio.tempsAconseguit}}</p>
+            </div>
+
+        </div>
     </div>
-</div>
 </div>
