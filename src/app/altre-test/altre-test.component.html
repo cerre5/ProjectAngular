@@ -3,5 +3,6 @@
 </div>
 
 <div id="divClickable" (click)="onDivClick()">clicka per comensar</div>
-<div id="comprovar"><textarea #textarea></textarea>
-        <button (click)="comprovarResposta(textarea.value)">Comprovar</button></div>
+
+<form id="comprovar" (ngSubmit)="comprovarResposta(textarea.value)"><input id="inputNumber" type="number" #textarea>
+        <button type="submit">Comprovar</button></form>

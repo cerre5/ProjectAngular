@@ -17,10 +17,15 @@ export class LoginComponent implements OnInit {
   password: string = ""
 
   constructor(public afAuth: AngularFireAuth,
-     public user: UserService,
-      public router: Router) { }
+    public user: UserService,
+    public router: Router) { }
 
   ngOnInit() {
+  }
+
+
+  redirectRegister() {
+    this.router.navigate(['/register'])
   }
 
   async login() {

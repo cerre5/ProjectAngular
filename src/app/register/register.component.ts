@@ -25,6 +25,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  redirectLogin() {
+    this.router.navigate(['/login'])
+  }
+
   async register() {
     const { username, password, cpassword } = this
     if (password !== cpassword) {
@@ -34,11 +38,11 @@ export class RegisterComponent implements OnInit {
     try {
       const res = await this.afAuth.createUserWithEmailAndPassword(username, password)
 
-      
+
       this.afstore.doc(`users/${res.user.uid}`).set({
         username
       })
-      
+
 
       this.user.setUser({
         username,

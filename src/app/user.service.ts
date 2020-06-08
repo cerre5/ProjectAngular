@@ -18,11 +18,19 @@ export class UserService{
     }
 
     getUID(){
+        if(this.user){
         return this.user.uid
+        } else{
+            return false
+        }
     }
 
     getUsername(){
-        return this.user.username
+        if(this.user){
+            return this.user.username
+        } else {
+            return false
+        }
     }
     
 }

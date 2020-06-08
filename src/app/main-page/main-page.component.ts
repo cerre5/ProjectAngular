@@ -3,6 +3,7 @@ import { DataServices } from '../data.services';
 import * as firebase from 'firebase';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-main-page',
@@ -13,13 +14,17 @@ export class MainPageComponent implements OnInit {
 
   prova: string = "SUP";
 
-  constructor(private dataServices: DataServices, private loginService: LoginService, private router:Router) { }
+  constructor(private dataServices: DataServices,
+    private loginService: LoginService,
+    private router:Router,
+    public user: UserService) { }
 
   ngOnInit(){
-    // firebase.initializeApp({  NO CAL AQUI
-    //   apiKey: "AIzaSyDtqry5sCAVie6uv06rBFyfOLdUXhFJYKU",
-    //   authDomain: "projecteangularmad.firebaseapp.com",
-    // })
+    //comprovar si el usuari ha fet login
+    if (!this.user.getUID()) {
+      this.router.navigate(['register']);
+    }
+   
   }
 
   isAutenticado(){
