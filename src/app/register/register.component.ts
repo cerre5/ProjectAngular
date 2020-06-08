@@ -18,13 +18,13 @@ export class RegisterComponent implements OnInit {
   cpassword: string = ""
 
   constructor(public afAuth: AngularFireAuth,
-     public afstore: AngularFirestore,
-     public user: UserService,
-     public router: Router) { }
+    public user: UserService,
+    public router: Router,
+    public afstore: AngularFirestore) { }
 
   ngOnInit() {
   }
-/*
+
   async register() {
     const { username, password, cpassword } = this
     if (password !== cpassword) {
@@ -34,20 +34,22 @@ export class RegisterComponent implements OnInit {
     try {
       const res = await this.afAuth.createUserWithEmailAndPassword(username, password)
 
+      
       this.afstore.doc(`users/${res.user.uid}`).set({
         username
       })
+      
 
       this.user.setUser({
         username,
         uid: res.user.uid
       })
 
-this.router.navigate(['/testos'])
+      this.router.navigate(['/testos'])
 
     } catch (err) {
       console.dir(err)
     }
   }
-*/
+
 }

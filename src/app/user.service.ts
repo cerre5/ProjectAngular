@@ -20,5 +20,9 @@ export class UserService{
     getUID(){
         return this.user.uid
     }
+
+    getUsername(){
+        return this.user.username
+    }
     
 }

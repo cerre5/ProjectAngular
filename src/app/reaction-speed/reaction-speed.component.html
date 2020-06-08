@@ -1,5 +1,12 @@
 <div id="divclickable" (click)="onDivClick()">
-CLICKA PER COMENSAR
+    CLICKA PER COMENSAR
+</div>
+
+<p>La teva millor puntuació és: {{maximaPuntuacio}}</p>
+<br>
+<p>RANKING!!!</p>
+<div *ngFor="let puntuacio of ranking; index as i">
+    <p>{{i + 1}}) Usuari: {{puntuacio.username}} Millor temps: {{puntuacio.tempsAconseguit}}</p>
 </div>
 
 

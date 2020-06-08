@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataServices } from '../data.services';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from '../user.service';
+
 var jocComensat = false;
 var divEsClickable = true;
 var interval;
-var tempsAconseguit;
+var tempsAconseguit: number;
+var username;
+
 
 @Component({
   selector: 'app-reaction-speed',
@@ -14,12 +19,57 @@ var tempsAconseguit;
 
 
 export class ReactionSpeedComponent implements OnInit {
+
+  public reactionEntry;
+  public esMaxim = false;
+  public tempsAconseguitFirebase: number;
+  public maximaPuntuacio: number;
+  public ranking;
+
   constructor(
-    private router: Router, 
-    private dataServices: DataServices) { }
+    private router: Router,
+    private dataServices: DataServices,
+    public afstore: AngularFirestore,
+    public user: UserService) {
+
+    //DIRLI AL USUARI EL SEU MILLOR TEMPS
+    this.carregarMillorPuntuacio()
+
+    //RANKIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIING
+
+    //CARREGAR TOTS ELS POSTS ORDENATS PER PUNTUACIO
+    //NO CAL FER SUBSCRIBE AQUI SI FAIG ASYNC NGMODEL AL HTML BROHTER 
+    this.carregarRanking()
+
+
+  }
 
   ngOnInit() {
+    username = this.user.getUsername();
+    console.log(username)
 
+  }
+
+  carregarMillorPuntuacio() {
+    this.afstore.doc<any>(`reaction/${this.user.getUID()}`).valueChanges()
+      .subscribe(value => {
+        if (value != undefined) {
+
+          this.maximaPuntuacio = value.tempsAconseguit
+
+        } else {
+
+          this.maximaPuntuacio = null
+
+        }
+      })
+  }
+
+  carregarRanking() {
+    this.afstore.collection('reaction', ref =>
+      ref.orderBy('tempsAconseguit')).valueChanges().subscribe(value => {
+        this.ranking = value
+      })
   }
 
   tornar() {
@@ -35,16 +85,45 @@ export class ReactionSpeedComponent implements OnInit {
       document.getElementById("divclickable").innerHTML = "espera al color verd i clica";
       var numeroAleatori = Math.floor(Math.random() * (+5000 - +2000)) + +2000;
       this.esperarTempsAleatori(numeroAleatori);
-    } else if(jocComensat && divEsClickable) {
+    } else if (jocComensat && divEsClickable) {
       clearInterval(interval);
       //AQUI ESTA EL VALOR PER PUJAR A LA BASE DE DADES SI ES EL SEU MILLOR TEMPS
-      console.log(tempsAconseguit);
-      //AQUI ES CRIDA EL METODE DE DATASSERVICES QUE PENJA A LA BASE DE DADES, CANVIAR
-      //USUARI PER L'USUARI QUE ESTIGUI LOGGEADO
-      this.dataServices.guardarPuntuacio("usuariPendentDeFerLogin", "reactionspeed", tempsAconseguit)
+
+      if (this.afstore.doc(`reaction/${this.user.getUID()}`)) {
+        this.afstore.doc<any>(`reaction/${this.user.getUID()}`).valueChanges()
+          .subscribe(value => {
+            if (value != undefined) {
+              this.tempsAconseguitFirebase = value.tempsAconseguit;
+              console.log("firebase: " + this.tempsAconseguitFirebase + " tempaaconseguit: " + tempsAconseguit)
+
+              if (this.tempsAconseguitFirebase > tempsAconseguit) {
+                this.afstore.doc(`reaction/${this.user.getUID()}`).set({
+                  username,
+                  tempsAconseguit
+                })
+
+              }
+
+            } else {
+
+              this.afstore.doc(`reaction/${this.user.getUID()}`).set({
+                username,
+                tempsAconseguit
+              })
+
+            }
+          })
+
+      }
+
+
+      console.log(this.esMaxim)
+
+      //this.dataServices.guardarPuntuacio("usuariPendentDeFerLogin", "reactionspeed", tempsAconseguit)
       document.getElementById("divclickable").innerHTML = document.getElementById("divclickable").innerHTML + "<br />" + "torna a clickar  ";
       jocComensat = false;
     }
+    this.carregarRanking();
   }
 
   esperarTempsAleatori(numeroAleatori) {
@@ -52,13 +131,13 @@ export class ReactionSpeedComponent implements OnInit {
     setTimeout(this.comensarJoc, numeroAleatori);
   }
   comensarJoc() {
-    divEsClickable=true;
+    divEsClickable = true;
     var startTime = Date.now();
     document.getElementById("divclickable").style.backgroundColor = "green";
     interval = setInterval(function () {
       var elapsedTime = Date.now() - startTime;
       document.getElementById("divclickable").innerHTML = (elapsedTime / 1000).toFixed(3);
-      tempsAconseguit = (elapsedTime / 1000).toFixed(3);
+      tempsAconseguit = parseFloat((elapsedTime / 1000).toFixed(3));
     }, 100);
   }
 }

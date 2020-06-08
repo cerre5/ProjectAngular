@@ -14,6 +14,7 @@ import { AltreTestComponent } from './altre-test/altre-test.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './user.service';
 import { RegisterComponent } from './register/register.component';
@@ -42,7 +43,7 @@ const config ={
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(environment.config, 'humanbenchmark-2f214'),
     AppRoutingModule,
     AppRoutingModule,
     FormsModule,
