@@ -72,7 +72,9 @@ export class ReactionSpeedComponent implements OnInit {
         }
       })
   }
-
+  logout() {
+    this.router.navigate(['login']);
+  }
   carregarRanking() {
     this.afstore.collection('reaction', ref =>
       ref.orderBy('tempsAconseguit')).valueChanges().subscribe(value => {

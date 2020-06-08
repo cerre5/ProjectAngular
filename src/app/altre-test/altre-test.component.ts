@@ -38,7 +38,9 @@ export class AltreTestComponent implements OnInit {
     //CARREGAR TOTS ELS POSTS ORDENATS PER PUNTUACIO
     this.carregarRanking()
   }
-
+  logout() {
+    this.router.navigate(['login']);
+  }
   carregarMillorPuntuacio() {
     this.afstore.doc<any>(`altre/${this.user.getUID()}`).valueChanges()
       .subscribe(value => {
