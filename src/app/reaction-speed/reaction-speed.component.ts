@@ -81,8 +81,8 @@ export class ReactionSpeedComponent implements OnInit {
   onDivClick() {
     if (!jocComensat && divEsClickable) {
       jocComensat = true;
-      document.getElementById("divclickable").style.backgroundColor = "yellow";
-      document.getElementById("divclickable").innerHTML = "espera al color verd i clica";
+      document.getElementById("divclickable").style.backgroundColor = "darkorange";
+      document.getElementById("textclickable").innerHTML = "Espera al color verd i clica";
       var numeroAleatori = Math.floor(Math.random() * (+5000 - +2000)) + +2000;
       this.esperarTempsAleatori(numeroAleatori);
     } else if (jocComensat && divEsClickable) {
@@ -120,7 +120,7 @@ export class ReactionSpeedComponent implements OnInit {
       console.log(this.esMaxim)
 
       //this.dataServices.guardarPuntuacio("usuariPendentDeFerLogin", "reactionspeed", tempsAconseguit)
-      document.getElementById("divclickable").innerHTML = document.getElementById("divclickable").innerHTML + "<br />" + "torna a clickar  ";
+      document.getElementById("textclickable").innerHTML = document.getElementById("textclickable").innerHTML + "<br />" + "Torna a intentar-ho!";
       jocComensat = false;
     }
     this.carregarRanking();
@@ -136,7 +136,7 @@ export class ReactionSpeedComponent implements OnInit {
     document.getElementById("divclickable").style.backgroundColor = "green";
     interval = setInterval(function () {
       var elapsedTime = Date.now() - startTime;
-      document.getElementById("divclickable").innerHTML = (elapsedTime / 1000).toFixed(3);
+      document.getElementById("textclickable").innerHTML = (elapsedTime / 1000).toFixed(3);
       tempsAconseguit = parseFloat((elapsedTime / 1000).toFixed(3));
     }, 100);
   }

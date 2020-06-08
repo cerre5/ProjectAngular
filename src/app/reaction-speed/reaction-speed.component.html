@@ -1,13 +1,29 @@
-<div id="divclickable" (click)="onDivClick()">
-    CLICKA PER COMENSAR
+<div class="topnav">
+    <a (click)="tornar()">Tornar</a>
 </div>
 
-<p>La teva millor puntuació és: {{maximaPuntuacio}}</p>
-<br>
-<p>RANKING!!!</p>
+<div id="divclickable" (click)="onDivClick()">
+    <h1 id="textclickable" class="textinterior sansserif">Clica per començar!</h1>
+</div>
+
+<br/>
+<!-- <p>RANKING!!!</p>
 <div *ngFor="let puntuacio of ranking; index as i">
     <p>{{i + 1}}) Usuari: {{puntuacio.username}} Millor temps: {{puntuacio.tempsAconseguit}}</p>
+</div> -->
+
+<div class="container">
+<div class="card text-center">
+    <div class="card-header">
+        <h2 class="millorPuntuacio">La teva millor puntuació és: {{maximaPuntuacio}}</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Els jugadors amb millors reflexos!</h5>
+
+        <div *ngFor="let puntuacio of ranking; index as i">
+            <p class="card-text textGran">{{i + 1}}) Usuari: {{puntuacio.username}} Millor temps: {{puntuacio.tempsAconseguit}}</p>
+        </div>
+
+    </div>
 </div>
-
-
-<button (click)="tornar()">Tornar</button>
+</div>
