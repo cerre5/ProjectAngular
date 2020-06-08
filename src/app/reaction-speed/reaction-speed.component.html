@@ -14,8 +14,8 @@
 
 <div class="container">
 <div class="card text-center">
-    <div class="card-header">
-        <h2 *ngIf="maximaPuntuacio" class="millorPuntuacio">La teva millor puntuació és: {{maximaPuntuacio}}</h2>
+    <div *ngIf="maximaPuntuacio" class="card-header">
+        <h2 class="millorPuntuacio">La teva millor puntuació és: {{maximaPuntuacio}}</h2>
     </div>
     <div *ngIf="ranking" class="card-body">
         <h5 class="card-title">Els jugadors amb millors reflexos!</h5>
