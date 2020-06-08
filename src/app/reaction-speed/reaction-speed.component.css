@@ -37,3 +37,7 @@
 .textGran {
     font-size: large;
 }
+
+.topnav-right {
+    float: right;
+  }

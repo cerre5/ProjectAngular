@@ -42,3 +42,7 @@
 #inputNumber {
     max-width: 55vw;
 }
+
+.topnav-right {
+    float: right;
+  }
