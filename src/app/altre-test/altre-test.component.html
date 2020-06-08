@@ -6,3 +6,16 @@
 
 <form id="comprovar" (ngSubmit)="comprovarResposta(textarea.value)"><input id="inputNumber" type="number" #textarea>
         <button type="submit">Comprovar</button></form>
+
+<div class="card-header">
+        <h2 *ngIf="maximaPuntuacio" class="millorPuntuacio">La teva millor puntuació és: Nivell {{maximaPuntuacio}}</h2>
+</div>
+<div *ngIf="ranking" class="card-body">
+        <h5 class="card-title">Els jugadors amb millor memòria!</h5>
+
+        <div *ngFor="let puntuacio of ranking; index as i">
+                <p class="card-text textGran">{{i + 1}}) Usuari: {{puntuacio.username}} Nivell més alt:
+                        {{puntuacio.nivell}}</p>
+        </div>
+
+</div>
