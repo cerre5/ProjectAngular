@@ -2,20 +2,34 @@
         <a (click)="tornar()">Tornar</a>
 </div>
 
-<div id="divClickable" (click)="onDivClick()">clicka per comensar</div>
-
-<form id="comprovar" (ngSubmit)="comprovarResposta(textarea.value)"><input id="inputNumber" type="number" #textarea>
-        <button type="submit">Comprovar</button></form>
-
-<div *ngIf="maximaPuntuacio" class="card-header">
-        <h2 class="millorPuntuacio">La teva millor puntuació és: Nivell {{maximaPuntuacio}}</h2>
+<div id="divClickable" (click)="onDivClick()">
+        <h1 id="textClickable" class="textinterior sansserif">Clica per començar!</h1>
 </div>
-<div *ngIf="ranking" class="card-body">
-        <h5 class="card-title">Els jugadors amb millor memòria!</h5>
 
-        <div *ngFor="let puntuacio of ranking; index as i">
-                <p class="card-text textGran">{{i + 1}}) Usuari: {{puntuacio.username}} Nivell més alt:
-                        {{puntuacio.nivell}}</p>
+<form id="comprovar" (ngSubmit)="comprovarResposta(textarea.value)">
+        <div id="centerForm" class="input-group">
+                <input class="form-control" id="inputNumber" type="number" #textarea>
+                <span class="input-group-btn">
+                        <button class="btn btn-outline-secondary" type="submit">Enviar</button>
+                </span>
         </div>
+</form>
 
+<br>
+
+<div class="container">
+        <div class="card text-center">
+                <div *ngIf="maximaPuntuacio" class="card-header">
+                        <h2 class="millorPuntuacio">La teva millor puntuació és: Nivell {{maximaPuntuacio}}</h2>
+                </div>
+                <div *ngIf="ranking" class="card-body">
+                        <h5 class="card-title">Els jugadors amb millor memòria!</h5>
+
+                        <div *ngFor="let puntuacio of ranking; index as i">
+                                <p class="card-text textGran">{{i + 1}}) Usuari: {{puntuacio.username}} Nivell més alt:
+                                        {{puntuacio.nivell}}</p>
+                        </div>
+
+                </div>
+        </div>
 </div>

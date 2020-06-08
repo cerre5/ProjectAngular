@@ -5,26 +5,26 @@
             <div id="login-column" class="col-md-6">
                 <div id="login-box" class="col-md-12">
                     <form id="login-form" class="form" #f="ngForm" (ngSubmit)="f.form.valid && login()">
-                        <h3 class="text-center text-info">Login</h3>
+                        <h3 class="text-center text-dark">Entrar</h3>
                         <div class="form-group">
-                            <label for="email" class="text-info">Email:</label><br>
+                            <label for="email" class="text-dark">Correu:</label><br>
                             <input type="text" name="email" id="email" class="form-control" [(ngModel)]="username"
                                 ngModel required>
                         </div>
                         <div class="form-group">
-                            <label for="password" class="text-info">Password:</label><br>
+                            <label for="password" class="text-dark">Contrasenya:</label><br>
                             <input type="password" name="password" id="password" class="form-control"
                                 [(ngModel)]="password" ngModel required>
                         </div>
                         <div class="form-group">
                             <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
-                            <button type="submit" class="btn btn-info">Enviar</button>
+                            <button type="submit" class="btn btn-dark">Enviar</button>
                         </div>
                         <!-- <div id="register-link" class="text-right">
                                 <a href="#" class="text-info">Register here</a>
                             </div> -->
                     </form>
-                    <a (click)="redirectRegister()">Crea un compte nou</a>
+                    <a id="btnRedirect" (click)="redirectRegister()">Crea un compte nou</a>
 
                 </div>
             </div>

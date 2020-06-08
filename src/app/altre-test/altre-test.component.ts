@@ -106,7 +106,7 @@ export class AltreTestComponent implements OnInit {
     divEsClickable = false;
     nivell = nivell + 1;
     numeroCorrecte = this.generarAleatori(nivell);
-    document.getElementById("divClickable").innerHTML = "Nivell: " + nivell + "<br />" + numeroCorrecte.toString();
+    document.getElementById("textClickable").innerHTML = "Nivell: " + nivell + "<br />" + numeroCorrecte.toString();
 
     setTimeout(this.inputResposta, 3000);
   }
@@ -114,7 +114,7 @@ export class AltreTestComponent implements OnInit {
   inputResposta() {
     (<HTMLInputElement>document.getElementById('inputNumber')).value = "";
     mostrarTextArea.style.display = "block";
-    document.getElementById("divClickable").innerHTML = "Entra el numero que acabes de veure";
+    document.getElementById("textClickable").innerHTML = "Entra el numero que acabes de veure";
   }
 
   comprovarResposta(textareaValue) {
@@ -129,7 +129,7 @@ export class AltreTestComponent implements OnInit {
 
   gameover() {
     console.log(nivell)
-    document.getElementById("divClickable").innerHTML = "Has completat " + (nivell - 1) + " nivells, memoritzant fins a " + (nivell - 1) + " xifres" + "<br />" + "clicka per tornar a jugar";
+    document.getElementById("textClickable").innerHTML = "Has completat " + (nivell - 1) + " nivells, memoritzant fins a " + (nivell - 1) + " xifres" + "<br />" + "clicka per tornar a jugar";
     nivell = nivell - 1
     //PENJAR EL NIVELL SI ES MES ALT QUE EL SEU MAXIM
 

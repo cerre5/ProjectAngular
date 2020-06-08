@@ -1,7 +1,15 @@
 #divClickable{
-    background-color:red;
-    height: 200px;
-    width: 400px;
+    background-color:darkred;
+    height:40%;
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.sansserif {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .topnav {
@@ -23,4 +31,14 @@
     background-color: darkgrey;
     color: black;
     cursor: pointer;
+}
+
+#centerForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputNumber {
+    max-width: 55vw;
 }

@@ -1,0 +1,7 @@
+#btnRedirect {
+    color: orange;
+}
+
+#btnRedirect:hover {
+    cursor: pointer;
+}
