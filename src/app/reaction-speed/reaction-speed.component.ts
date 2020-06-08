@@ -31,6 +31,10 @@ export class ReactionSpeedComponent implements OnInit {
     private dataServices: DataServices,
     public afstore: AngularFirestore,
     public user: UserService) {
+    //comprovar si el usuari ha fet login
+    if (!this.user.getUID()) {
+      this.router.navigate(['register']);
+    }
 
     //DIRLI AL USUARI EL SEU MILLOR TEMPS
     this.carregarMillorPuntuacio()
@@ -45,6 +49,11 @@ export class ReactionSpeedComponent implements OnInit {
   }
 
   ngOnInit() {
+    //comprovar si el usuari ha fet login
+    if (!this.user.getUID()) {
+      this.router.navigate(['register']);
+    }
+
     username = this.user.getUsername();
     console.log(username)
 

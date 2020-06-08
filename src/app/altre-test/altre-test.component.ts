@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AbstractControlDirective } from '@angular/forms';
+import { UserService } from '../user.service';
 var divEsClickable = true;
 var nivell = 0;
 var numeroCorrecte = 0;
@@ -15,9 +16,16 @@ var mostrarTextArea;
 export class AltreTestComponent implements OnInit {
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    public user: UserService) { }
 
   ngOnInit() {
+
+    //comprovar si el usuari ha fet login
+    if (!this.user.getUID()) {
+      this.router.navigate(['register']);
+    }
+
     mostrarTextArea = document.getElementById("comprovar");
     mostrarTextArea.style.display = "none";
   }
@@ -60,6 +68,7 @@ export class AltreTestComponent implements OnInit {
   }
 
   inputResposta() {
+    (<HTMLInputElement>document.getElementById('inputNumber')).value = "";
     mostrarTextArea.style.display = "block";
     document.getElementById("divClickable").innerHTML = "Entra el numero que acabes de veure";
   }
@@ -75,7 +84,7 @@ export class AltreTestComponent implements OnInit {
   }
 
   gameover() {
-    document.getElementById("divClickable").innerHTML = "Has completat " + (nivell-1) + " nivells, memoritzant fins a " + (nivell-1) + " xifres" + "<br />" + "clicka per tornar a jugar";
+    document.getElementById("divClickable").innerHTML = "Has completat " + (nivell - 1) + " nivells, memoritzant fins a " + (nivell - 1) + " xifres" + "<br />" + "clicka per tornar a jugar";
     mostrarTextArea.style.display = "none";
     jocComensat = false;
     divEsClickable = true;
